@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101827">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Where Is My Parcel">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+<title>Where Is My Parcel</title>
+</head>
+<body>
+<div class="app-shell">
+  <header class="topbar">
+    <div class="brand"><div class="brand-icon">📦</div><div><div class="eyebrow">PARCEL TRACKER</div><h1>Where Is My Parcel</h1></div></div>
+    <button class="icon-btn" id="themeBtn" aria-label="Change appearance">◐</button>
+  </header>
+  <main>
+    <section class="welcome">
+      <div><p class="eyebrow">YOUR DELIVERIES, AT A GLANCE</p><h2>Keep an eye on<br>what’s on the way.</h2><p class="muted">All your parcels in one place.</p></div>
+      <div class="package-art">📦</div>
+    </section>
+    <section class="stats">
+      <div class="stat"><span id="totalCount">0</span><small>Total parcels</small></div>
+      <div class="stat"><span id="movingCount">0</span><small>In transit</small></div>
+      <div class="stat"><span id="deliveredCount">0</span><small>Delivered</small></div>
+    </section>
+    <section class="add-card">
+      <div class="section-head"><div><p class="eyebrow">NEW DELIVERY</p><h3>Add a parcel</h3></div><span class="plus">＋</span></div>
+      <form id="addForm">
+        <label for="tracking">Tracking number</label>
+        <input id="tracking" required autocomplete="off" placeholder="Enter your tracking number">
+        <div class="form-row">
+          <div><label for="carrier">Carrier</label><select id="carrier"><option>Auto-detect</option><option>USPS</option><option>UPS</option><option>FedEx</option><option>DHL</option></select></div>
+          <div><label for="nickname">Nickname <span class="optional">optional</span></label><input id="nickname" placeholder="e.g. New phone"></div>
+        </div>
+        <label for="locker">Locker / recipient note <span class="optional">optional</span></label>
+        <input id="locker" placeholder="e.g. Locker 204">
+        <button class="primary" type="submit">＋ Add parcel</button>
+      </form>
+    </section>
+    <section class="parcel-section">
+      <div class="section-head"><div><p class="eyebrow">YOUR SHIPMENTS</p><h3>Tracked parcels</h3></div><button class="text-btn" id="clearBtn">Clear all</button></div>
+      <div id="parcelList" class="parcel-list"></div>
+      <div id="emptyState" class="empty"><div>🧾</div><h3>No parcels yet</h3><p>Add a tracking number above to start your list.</p></div>
+    </section>
+    <section class="settings-card">
+      <div class="section-head"><div><p class="eyebrow">STAY INFORMED</p><h3>Notifications</h3></div><span class="bell">🔔</span></div>
+      <p class="muted">Choose which delivery events matter to you. On iPhone, install this app to your Home Screen before enabling web push.</p>
+      <div id="notificationOptions" class="checks"></div>
+      <button class="secondary" id="enableNotifications">Enable notifications</button>
+      <p id="notificationStatus" class="tiny muted">Notifications are not enabled yet.</p>
+    </section>
+    <div class="disclaimer"><b>First version:</b> parcels are saved on this device. Carrier scans are not connected yet; use the carrier link or update a parcel’s status manually. Live tracking and automatic push alerts will be connected in the next setup step.</div>
+  </main>
+  <footer>WHERE IS MY PARCEL <span>•</span> VERSION 1.0</footer>
+</div>
+<div id="toast" class="toast" role="status"></div>
+<script src="app.js"></script>
+</body>
+</html>
